@@ -52,12 +52,16 @@ export default function AddTransaction({
             variant="outlined"
             fullWidth
             value={toAddress}
+            // onChange={(e) => {
+            //   const value = e.target.value;
+            //   if (value == validateAddress) {
+            //     toast.error("To address cannot be your address");
+            //     return;
+            //   } else toast.success("To address is validated");
+            //   setToAddress(value);
+            // }}
             onChange={(e) => {
               const value = e.target.value;
-              if (value == validateAddress) {
-                toast.error("To address cannot be your address");
-                return;
-              } else toast.success("To address is validated");
               setToAddress(value);
             }}
           />
@@ -75,6 +79,10 @@ export default function AddTransaction({
               const value = Number(e.target.value);
               if (value > 100) {
                 toast.error("Amount cannot be more than 100");
+                return;
+              }
+              if (value === 0) {
+                toast.error("Amount cannot be 0");
                 return;
               }
               setAmount(value);

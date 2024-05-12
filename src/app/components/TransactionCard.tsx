@@ -55,7 +55,7 @@ export default function TransactionCard({
           </Typography>
         </Box>
         <Box sx={{ display: "flex" }}>
-          <Typography variant="body2">Message: </Typography>
+          <Typography variant="body2">Hash: </Typography>
           <Typography
             variant="body2"
             sx={{

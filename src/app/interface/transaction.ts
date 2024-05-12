@@ -13,3 +13,8 @@ export interface ITransaction {
   status: string;
   to_address: string;
 }
+
+export interface IBalance {
+  balance: number;
+  public_key: string;
+}
