@@ -12,11 +12,13 @@ export default function BlocksPage() {
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
   console.log(data);
-
+  const dataBlock = data.data;
   console.log("block", data);
   return (
     <>
-      <Box sx={{ padding: "30px" }}>{/* <BlockTable /> */}</Box>
+      <Box sx={{ padding: "30px" }}>
+        <BlockTable rows={dataBlock} />
+      </Box>
     </>
   );
 }
