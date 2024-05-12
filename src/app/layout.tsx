@@ -1,6 +1,7 @@
 import { Providers } from "./providers";
 import DrawerAppBar from "./components/Appbar";
 import { Box } from "@mui/material";
+
 export default function RootLayout({
   children,
 }: {
@@ -8,10 +9,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="flex">
+      <body className="flex flex-col">
         <Providers>
           <DrawerAppBar />
-          <Box sx={{ marginTop: "60px" }}>{children}</Box>
+          <Box sx={{ flexGrow: 1 }}>{children}</Box>
         </Providers>
       </body>
     </html>
