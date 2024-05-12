@@ -14,10 +14,7 @@ export default function WalletPage() {
   const { data, error } = useSWR("wallets", CreateWallet);
   const { data: balanceData, error: balanceError } = useSWR(
     "balances",
-    getBalance,
-    {
-      revalidateOnFocus: true,
-    }
+    getBalance
   );
 
   const [walletData, setWalletData] = useState<ICreateWallet | null>(null);

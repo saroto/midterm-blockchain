@@ -1,6 +1,7 @@
 "use server";
 import { BASE_URL } from "../../../url";
 import ICreateTransaction from "../interface/transaction";
+import { mutate } from "swr";
 export const createTransaction = async (transaction: ICreateTransaction) => {
   const response = await fetch(`${BASE_URL}/transaction/create`, {
     method: "POST",
@@ -31,5 +32,11 @@ export const getBalance = async (public_key: string) => {
     console.error("Network response was not ok");
   }
 
-  return await response.json();
+  const data = await response.json();
+
+  //   mutate(["balances", public_key], data);
+  // Mutate "balances"
+  //   mutate("balances", data, false);
+
+  return data;
 };

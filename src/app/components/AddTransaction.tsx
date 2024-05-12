@@ -3,7 +3,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ICreateTransaction from "../interface/transaction";
 import ICreateWallet from "../interface/wallet";
 import { Wallet } from "@mui/icons-material";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import { createTransaction } from "../api/transaction";
 import TransactionTable from "./TransactionTable";
 import { useState } from "react";
@@ -24,6 +24,9 @@ export default function AddTransaction({
   const [transactionData, setTransactionData] = useState<ITransaction | null>(
     null
   );
+  if (walletData === null) {
+    return;
+  }
   const handleClick = async () => {
     try {
       const transaction = await createTransaction({
@@ -32,6 +35,7 @@ export default function AddTransaction({
         amount: amount ?? 0,
       });
       setTransactionData(transaction.data.tx);
+      mutate("balances");
       console.log("Transaction created", transaction);
       toast.success("Transaction created Successfully");
     } catch (error) {
