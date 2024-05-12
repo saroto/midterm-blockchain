@@ -15,7 +15,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "next/link";
-
+import Image from "next/image";
+import useSWR, { mutate } from "swr";
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -52,7 +53,7 @@ export default function DrawerAppBar(props: Props) {
               color: "black",
             }}
           >
-            ONE NIGHT POLICY - BLOCKCHAIN
+            DUMA - BLOCKCHAIN
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" }, color: "black" }}>
             {navItems.map((item) => (
