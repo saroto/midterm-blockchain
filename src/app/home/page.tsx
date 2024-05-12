@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 export default function HomePage() {
   return (
     <>
@@ -45,12 +46,21 @@ export default function HomePage() {
             <Typography sx={{ marginRight: "20px" }}>
               Click here to Continue
             </Typography>
-            <Button
-              variant="contained"
-              sx={{ color: "white", backgroundColor: "black" }}
-            >
-              Wallet
-            </Button>
+            <Link href="/wallet">
+              <Button
+                variant="contained"
+                sx={{
+                  color: "white",
+                  fontSize: "16px",
+                  backgroundColor: "black",
+                  "&:hover": {
+                    backgroundColor: "grey",
+                  },
+                }}
+              >
+                Create Wallet
+              </Button>
+            </Link>
           </Box>
         </Box>
         <Box>

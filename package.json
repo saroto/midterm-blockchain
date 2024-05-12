@@ -19,6 +19,7 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-toastify": "^10.0.5",
     "styled-components": "^6.1.11",
     "swr": "^2.2.5"
   },
