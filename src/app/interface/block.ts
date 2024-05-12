@@ -1,7 +1,7 @@
 export default interface BlockData {
-  hashed: string;
+  hash: string;
   block_capacity: number;
-  mined: Date;
+  mined: boolean | undefined;
   nonce: number;
 }
 [];
