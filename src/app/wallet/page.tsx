@@ -6,6 +6,8 @@ import React, { useState, useEffect } from "react";
 import { CreateWallet } from "../api/wallet";
 import useSWR, { mutate } from "swr";
 import ICreateWallet from "../interface/wallet";
+import AddTransaction from "../components/AddTransaction";
+import { toast } from "react-toastify";
 export default function WalletPage() {
   const { data, error } = useSWR("wallets", CreateWallet);
 
@@ -16,8 +18,10 @@ export default function WalletPage() {
       const newWallet = await CreateWallet();
       console.log("new wallet", newWallet.data);
       setWalletData(newWallet.data);
+      toast.success("Wallet created successfully");
     } catch (error) {
       console.error(error);
+      toast.error(`Failed to create wallet`);
     }
   };
   if (error) return <div>Failed to load</div>;
@@ -49,6 +53,9 @@ export default function WalletPage() {
       <Box sx={{ paddingTop: "20px", paddingInline: "10px" }}>
         {" "}
         <WalletTable rows={walletData} />
+      </Box>
+      <Box sx={{ paddingTop: "20px", paddingInline: "10px" }}>
+        {walletData ? <AddTransaction walletData={walletData} /> : null}
       </Box>
     </Box>
   );
