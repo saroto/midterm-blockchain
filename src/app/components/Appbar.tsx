@@ -14,6 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Link from "next/link";
 
 interface Props {
   /**
@@ -24,7 +25,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["Home", "Wallet", "Block"];
+const navItems = ["Home", "Wallet", "Blocks"];
 
 export default function DrawerAppBar(props: Props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -55,22 +56,24 @@ export default function DrawerAppBar(props: Props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" }, color: "black" }}>
             {navItems.map((item) => (
-              <Button
-                variant="contained"
-                key={item}
-                sx={{
-                  color: "white",
-                  fontSize: "16px",
-                  paddingInline: "20px",
-                  backgroundColor: "black",
-                  marginInline: "10px",
-                  "&:hover": {
-                    backgroundColor: "grey",
-                  },
-                }}
-              >
-                {item}
-              </Button>
+              <Link href={`/${item.toLowerCase()}`} key={item}>
+                <Button
+                  variant="contained"
+                  key={item}
+                  sx={{
+                    color: "white",
+                    fontSize: "16px",
+                    paddingInline: "20px",
+                    backgroundColor: "black",
+                    marginInline: "10px",
+                    "&:hover": {
+                      backgroundColor: "grey",
+                    },
+                  }}
+                >
+                  {item}
+                </Button>
+              </Link>
             ))}
           </Box>
         </Toolbar>
