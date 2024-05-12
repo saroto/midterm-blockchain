@@ -5,7 +5,6 @@ import { BASE_URL } from "../../../url";
 import { useEffect, useState } from "react";
 import { GetBlock } from "../api/blocks";
 import useSWR from "swr";
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 export default function BlocksPage() {
   const { data, error } = useSWR("blocks", GetBlock);
 
