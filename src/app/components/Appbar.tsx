@@ -24,7 +24,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = ["Home", "Wallet", "Block"];
 
 export default function DrawerAppBar(props: Props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -51,13 +51,23 @@ export default function DrawerAppBar(props: Props) {
               color: "black",
             }}
           >
-            ONE NIGHT
+            ONE NIGHT POLICY - BLOCKCHAIN
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" }, color: "black" }}>
             {navItems.map((item) => (
               <Button
+                variant="contained"
                 key={item}
-                sx={{ color: "black", fontSize: "20px", paddingInline: "20px" }}
+                sx={{
+                  color: "white",
+                  fontSize: "16px",
+                  paddingInline: "20px",
+                  backgroundColor: "black",
+                  marginInline: "10px",
+                  "&:hover": {
+                    backgroundColor: "grey",
+                  },
+                }}
               >
                 {item}
               </Button>
