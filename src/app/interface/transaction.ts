@@ -18,3 +18,12 @@ export interface IBalance {
   balance: number;
   public_key: string;
 }
+
+export interface Data {
+  tx: ITransaction;
+}
+
+export interface Response {
+  data: Data;
+  status: string;
+}
