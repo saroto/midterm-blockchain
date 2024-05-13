@@ -37,7 +37,8 @@ export default function TransactionDialog({
       {/* <Button variant="contained" onClick={handleClickOpen}>
         Open dialog
       </Button> */}
-      <Dialog open={onOpen} onClose={onClose} fullWidth>
+
+      <Dialog open={onOpen} onClose={onClose} maxWidth="lg">
         <DialogTitle>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography variant="h6">Transaction</Typography>
@@ -46,9 +47,13 @@ export default function TransactionDialog({
             </IconButton>
           </Box>
         </DialogTitle>
-        <DialogContent>
+        <DialogContent
+          sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
+        >
           <Box sx={{ display: "flex" }}>
-            <Typography variant="body2">Amount:</Typography>
+            <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+              Amount:
+            </Typography>
             <Typography
               variant="body2"
               sx={{
@@ -61,7 +66,9 @@ export default function TransactionDialog({
             </Typography>
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Typography variant="body2">Sender:</Typography>
+            <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+              Sender:
+            </Typography>
             <Typography
               variant="body2"
               sx={{
@@ -74,7 +81,9 @@ export default function TransactionDialog({
             </Typography>
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Typography variant="body2">Hash:</Typography>
+            <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+              Hash:
+            </Typography>
             <Typography
               variant="body2"
               sx={{
@@ -87,7 +96,9 @@ export default function TransactionDialog({
             </Typography>
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Typography variant="body2">PubKey:</Typography>
+            <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+              PubKey:
+            </Typography>
             <Typography
               variant="body2"
               sx={{
@@ -100,7 +111,9 @@ export default function TransactionDialog({
             </Typography>
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Typography variant="body2">Signature:</Typography>
+            <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+              Signature:
+            </Typography>
             <Typography
               variant="body2"
               sx={{
@@ -117,7 +130,9 @@ export default function TransactionDialog({
             </Typography>
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Typography variant="body2">Status:</Typography>
+            <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+              Status:
+            </Typography>
             <Typography
               variant="body2"
               sx={{
@@ -130,7 +145,9 @@ export default function TransactionDialog({
             </Typography>
           </Box>
           <Box sx={{ display: "flex" }}>
-            <Typography variant="body2">Reciver:</Typography>
+            <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+              Reciver:
+            </Typography>
             <Typography
               variant="body2"
               sx={{
@@ -143,10 +160,6 @@ export default function TransactionDialog({
             </Typography>
           </Box>
         </DialogContent>
-
-        <DialogActions>
-          <Button onClick={onClose}>Cancel</Button>
-        </DialogActions>
       </Dialog>
     </div>
   );

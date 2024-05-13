@@ -18,7 +18,6 @@ export default function WalletTable({ rows }: { rows: ICreateWallet | null }) {
     navigator.clipboard.writeText(publicKey);
   };
 
-  console.log("waalet in com", rows);
   if (rows === null) {
     return (
       <Typography>
