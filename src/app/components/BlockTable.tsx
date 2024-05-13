@@ -11,9 +11,11 @@ function createData(
   hash: string,
   block_capacity: number,
   mined: boolean,
-  nonce: number
+  nonce: number,
+  transactions?: [],
+  timestamp?: number
 ): BlockData {
-  return { hash, block_capacity, mined, nonce };
+  return { hash, block_capacity, mined, nonce, transactions, timestamp };
 }
 
 export default function BlockTable({ rows }: { rows: BlockData[] }) {
@@ -26,9 +28,12 @@ export default function BlockTable({ rows }: { rows: BlockData[] }) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Hashed</TableCell>
-            <TableCell align="right">Block Capacity</TableCell>
             <TableCell align="right">Nonce</TableCell>
+            <TableCell>Timestamps</TableCell>
+            <TableCell>Hashed</TableCell>
+            <TableCell>Transactions</TableCell>
+            {/* <TableCell>Hash</TableCell> */}
+            <TableCell align="right">Block Capacity</TableCell>
             <TableCell align="right">Mined</TableCell>
           </TableRow>
         </TableHead>
@@ -39,14 +44,17 @@ export default function BlockTable({ rows }: { rows: BlockData[] }) {
                 key={row.hash}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
+                <TableCell align="right">{row.nonce}</TableCell>
                 <TableCell component="th" scope="row">
+                  {new Date((row.timestamp ?? 0) * 1000).toLocaleString()}
+                </TableCell>
+                <TableCell component="th" scope="row" sx={{ color: "#4f9bd9" }}>
                   {row.hash}
                 </TableCell>
-                {/* <TableCell component="th" scope="row">
-                  {row.hash || "No Hash"}
-                </TableCell> */}
+                <TableCell component="th" scope="row">
+                  {row.transactions?.length}
+                </TableCell>
                 <TableCell align="right">{row.block_capacity}</TableCell>
-                <TableCell align="right">{row.nonce}</TableCell>
                 <TableCell align="right">
                   {row.mined ? "True" : "False"}
                 </TableCell>

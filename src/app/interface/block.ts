@@ -3,5 +3,7 @@ export default interface BlockData {
   block_capacity: number;
   mined: boolean | undefined;
   nonce: number;
+  transactions?: [];
+  timestamp?: number;
 }
 [];
