@@ -114,7 +114,7 @@ AddTransactionProps) {
             },
           }}
         >
-          Create Transaction
+          Sign Signature
         </Button>
       </Box>
       <Box>
