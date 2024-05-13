@@ -19,6 +19,11 @@ export default function WalletPage() {
 
   const [walletData, setWalletData] = useState<ICreateWallet | null>(null);
   const [myBalance, setMyBalance] = useState<IBalance | null>(null);
+  const [balance, setBalance] = useState<number | null>(null);
+
+  const handleBalanceChange = (newBalance: number | null) => {
+    setBalance(newBalance);
+  };
 
   useEffect(() => {
     const storedWalletData = localStorage.getItem("walletData");
@@ -46,15 +51,11 @@ export default function WalletPage() {
     if (walletData?.public_key) {
       fetchBalance();
     }
-  }, [walletData]);
-
+  }, [walletData, balance]);
   const handleClick = async () => {
     try {
       const newWallet = await CreateWallet();
-      //   const balances = await getBalance(walletData?.public_key ?? "");
-      //   setMyBalance(balances.data);
       console.log("new wallet", newWallet.data);
-      //   console.log("balance", balances);
       setWalletData(newWallet.data);
       toast.success("Wallet created successfully");
     } catch (error) {
@@ -108,7 +109,12 @@ export default function WalletPage() {
         <WalletTable rows={walletData} />
       </Box>
       <Box sx={{ paddingTop: "20px", paddingInline: "10px" }}>
-        {walletData ? <AddTransaction walletData={walletData} /> : null}
+        {walletData ? (
+          <AddTransaction
+            walletData={walletData}
+            onBalanceChange={handleBalanceChange}
+          />
+        ) : null}
       </Box>
     </Box>
   );
