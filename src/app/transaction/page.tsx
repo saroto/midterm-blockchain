@@ -65,7 +65,21 @@ export default function PendingTransaction() {
 
                 <TableCell align="right">{row.from_address}</TableCell>
                 <TableCell align="right">{row.to_address}</TableCell>
-                <TableCell align="right">{row.status}</TableCell>
+                <TableCell
+                  align="right"
+                  style={{
+                    color:
+                      row.status === "SUCCESS"
+                        ? "green"
+                        : row.status === "PENDING"
+                        ? "orange"
+                        : row.status === "FAILED"
+                        ? "red"
+                        : "black",
+                  }}
+                >
+                  {row.status}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
