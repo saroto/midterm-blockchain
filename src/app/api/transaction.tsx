@@ -40,3 +40,18 @@ export const getBalance = async (public_key: string) => {
 
   return data;
 };
+
+export const getEachTransaction = async (hash: string) => {
+  const response = await fetch(`${BASE_URL}/transaction/${hash}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    console.error("Network response was not ok");
+  }
+
+  return await response.json();
+};

@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { ITransaction } from "../interface/transaction";
 import { Box } from "@mui/material";
+import TransactionDialog from "./TransactionDialog";
 
 interface TransactionCardProps {
   transactions: ITransaction | null;
@@ -12,6 +13,8 @@ interface TransactionCardProps {
 export default function TransactionCard({
   transactions,
 }: TransactionCardProps) {
+  const [open, setOpen] = React.useState(false);
+
   if (transactions === null) {
     return (
       <Typography>
@@ -56,16 +59,24 @@ export default function TransactionCard({
         </Box>
         <Box sx={{ display: "flex" }}>
           <Typography variant="body2">Hash: </Typography>
+
           <Typography
             variant="body2"
             sx={{
               color: "#4f9bd9",
               fontWeight: "normal",
               paddingInline: "10px",
+              cursor: "pointer",
             }}
+            onClick={() => setOpen(true)}
           >
             {transactions.msg}
           </Typography>
+          <TransactionDialog
+            onOpen={open}
+            onClose={() => setOpen(false)}
+            hash={transactions.msg}
+          />
         </Box>
         <Box sx={{ display: "flex" }}>
           <Typography variant="body2">Public Key: </Typography>
