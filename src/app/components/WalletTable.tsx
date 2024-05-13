@@ -32,8 +32,7 @@ export default function WalletTable({ rows }: { rows: ICreateWallet | null }) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Secret Key</TableCell>
-            <TableCell>Public Key</TableCell>
+            <TableCell>Your Address</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -41,9 +40,6 @@ export default function WalletTable({ rows }: { rows: ICreateWallet | null }) {
             key={rows.public_key}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell component="th" scope="row">
-              {rows.secret_key}
-            </TableCell>
             <TableCell component="th" scope="row">
               {rows.public_key}
               <Button onClick={() => copyToClipboard(rows.public_key)}>

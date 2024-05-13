@@ -13,17 +13,23 @@ import TransactionCard from "./TransactionCard";
 interface AddTransactionProps {
   transactions?: ICreateTransaction;
   walletData: ICreateWallet | null;
+  onBalanceChange: (balance: number | null) => void;
 }
 export default function AddTransaction({
   walletData,
   transactions,
-}: AddTransactionProps) {
+  onBalanceChange,
+}: //   balance,
+//   setBalance,
+AddTransactionProps) {
   const secret_key = walletData?.secret_key;
   const [toAddress, setToAddress] = useState("");
   const [amount, setAmount] = useState(0);
   const [transactionData, setTransactionData] = useState<ITransaction | null>(
     null
   );
+  onBalanceChange(transactionData?.amount ?? null);
+  console.log("transaction", transactionData);
   if (walletData === null) {
     return;
   }
